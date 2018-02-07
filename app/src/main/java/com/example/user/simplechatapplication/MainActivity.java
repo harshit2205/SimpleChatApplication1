@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.user_log_out : FirebaseAuth.getInstance().signOut();
             startPriorActivity();
+                break;
+            case R.id.acc_sett :
+                Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(settingsIntent);
         }
 
         return true;

@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/acc_sett"
+        android:title="Account Settings"/>
+    <item
+        android:id="@+id/all_users"
+        android:title="All Users"/>
+    <item
         android:id="@+id/user_log_out"
-        android:title="Log out" />
+        android:title="Log out"/>
+
 </menu>

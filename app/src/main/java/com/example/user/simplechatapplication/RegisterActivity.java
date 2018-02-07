@@ -82,13 +82,21 @@ public class RegisterActivity extends AppCompatActivity {
                             userMap.put("status","hii there! I am using simple chat app");
                             userMap.put("image","default");
                             userMap.put("thumb_image","default");
-                             mdatabase.setValue(userMap);
+                             mdatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                 @Override
+                                 public void onComplete(@NonNull Task<Void> task) {
+                                     if(task.isSuccessful()){
+                                         mprogressdialog.dismiss();
+                                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                         startActivity(intent);
+                                         finish();
+                                     }
+                                 }
+                             });
 
-                            mprogressdialog.dismiss();
-                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-                            finish();
+
+
                         } else {
                             mprogressdialog.hide();
                             Toast.makeText(RegisterActivity.this, "Couldn't create your account please try again with different credentials",
